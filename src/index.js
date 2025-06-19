@@ -12,20 +12,19 @@ const arrGroups = [
   "FE2008-52",
   "Fm2008-23",
   "FM2022-1",
+  "FD2022-12",
+  "FE2000-1",
+  "fm2008",
 ];
 
-const regExpresion = " ";
-
 const checkNames = function (arr) {
-  return arr.map(function(item) {
-    let result;
-    if (item.length === 8) {
-      result = "Success";
-    } else {
-      result = "Error";
-    }
-    return `${item} - ${result}`;
+  const regExpresion = /^(F[DEM]|f[dem])20\d{2}(-\d+)?$/;
+
+  return arr.forEach((item) => {
+    if (regExpresion.test(item)) {
+      console.log(`${item} - Success`);
+    } else console.log(`${item} - Error`);
   });
 };
 
-console.log(checkNames(arrGroups));
+checkNames(arrGroups);
